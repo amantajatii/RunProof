@@ -2,15 +2,37 @@
 
 Deadline: **13 Agustus 2026, 12:00 UTC+2**. Tersisa 5 hari build + 1 hari submission.
 
-| Hari | Tanggal | Isi |
-|---|---|---|
-| D1 | 7 Ags | **GATE** — prasyarat, dua eksperimen, keputusan cabang, **PR bounty dibuka** |
-| D2 | 8 Ags | Spec format + runner |
-| D3 | 9 Ags | Runner lanjut |
-| D4 | 10 Ags | Tiga skenario + evidence report (HTML) |
-| D5 | 11 Ags | Rapikan + stretch |
-| D6 | 12 Ags | Video, submission, tx link |
-| — | 13 Ags | Buffer sampai 12:00. Jangan diisi kerja baru. |
+| Hari | Tanggal | Isi | Status |
+|---|---|---|---|
+| D1 | 7 Ags | **GATE** — prasyarat, dua eksperimen, keputusan cabang, **PR bounty dibuka** | ✅ selesai 8 Ags (PR telat sehari) |
+| D2 | 8 Ags | Spec format + runner | ✅ |
+| D3 | 9 Ags | Runner lanjut | ✅ ditarik maju ke 8 Ags |
+| D4 | 10 Ags | Tiga skenario + evidence report (HTML) | ✅ ditarik maju ke 8 Ags |
+| D5 | 11 Ags | Rapikan + stretch | 🟡 TEARDOWN final ✅ · stretch x402 belum |
+| D6 | 12 Ags | Video, submission, tx link | ⬜ |
+| — | 13 Ags | Buffer sampai 12:00. Jangan diisi kerja baru. | — |
+
+**Posisi per 8 Ags, sore.** D1–D4 kelar, jadi ada margin ~3 hari. Yang sudah jalan:
+`pnpm test` (spec parser + verdict + `forge test` 6 tes Solidity) dan
+`node --env-file=.env src/runner.js specs/*.json` (3 spec live di Sepolia, exit 0).
+PR upstream: [KeeperHub/keeperhub#1975](https://github.com/KeeperHub/keeperhub/pull/1975).
+
+Sisa nyata sebelum D6, sudah diurutkan:
+
+- [ ] Cek visual report HTML — belum pernah dilihat mata manusia, padahal ini yang direkam
+- [ ] Run bersih terakhir buat bahan video (`count` dari angka bulat)
+- [ ] Video 3 menit + submission
+- [ ] (opsional, buang tanpa penyesalan) stretch x402
+
+Yang **sengaja tidak** dikerjakan, biar tidak jadi hantu di checklist:
+
+- Retry/`recoveryOwner: "keeperhub"` — belum pernah teramati sekali pun. Kodenya ada dan
+  ada tesnya, tapi jangan diklaim di video.
+- Recovery milik RunProof sendiri (`runproof`) — **dihapus dari nilai yang valid.** KeeperHub
+  fail-closed sebelum broadcast, jadi tidak ada yang perlu dipulihkan. Menambah retry berarti
+  mengarang cerita recovery yang tidak didukung bukti.
+- Automated test untuk jalur REST — jalur itu diuji oleh 3 spec live. Mock-nya cuma akan
+  menguji mock, bukan KeeperHub.
 
 ---
 

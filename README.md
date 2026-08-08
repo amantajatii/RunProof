@@ -30,7 +30,7 @@ Writes `evidence/run-<ts>.json` (full raw responses) and `evidence/run-<ts>.html
 (a static report, no server, no framework). Exit code 0 means every spec observed the
 behaviour it declared — including specs that declare a failure.
 
-`pnpm test` runs the spec-parser self-check.
+`pnpm test` runs the spec-parser and verdict self-checks plus `forge test` on the fixture.
 
 ## Spec format
 

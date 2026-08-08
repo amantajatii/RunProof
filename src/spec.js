@@ -48,8 +48,10 @@ export function loadSpec(path) {
   if (!isAddress(contract)) fail(`contract is not an address: ${contract}`);
   if (!Number.isInteger(raw.chainId)) fail('chainId must be an integer');
   if (!raw.action || typeof raw.action !== 'object') fail('action is required');
-  if (raw.recovery && !['keeperhub', 'runproof', 'none'].includes(raw.recovery.expect))
-    fail(`recovery.expect must be keeperhub|runproof|none, got ${raw.recovery.expect}`);
+  // `runproof` is intentionally absent: RunProof does not retry, so no evidence could
+  // ever produce it. See the note on recoveryOwnerOf in verdict.js.
+  if (raw.recovery && !['keeperhub', 'none'].includes(raw.recovery.expect))
+    fail(`recovery.expect must be keeperhub|none, got ${raw.recovery.expect}`);
   if (raw.expectVerdict && !VERDICTS.includes(raw.expectVerdict))
     fail(`expectVerdict must be one of ${VERDICTS.join('|')}, got ${raw.expectVerdict}`);
 

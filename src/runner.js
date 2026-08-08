@@ -9,41 +9,10 @@ import {
   executionLogs,
 } from './keeperhub.js';
 import { renderReport } from './report.js';
+import { readClaim, verdictOf, recoveryOwnerOf } from './verdict.js';
 
 const jsonSafe = (_, v) => (typeof v === 'bigint' ? v.toString() : v);
 const log = (...a) => console.log(...a);
-
-/**
- * What KeeperHub claims happened, taken at face value from the execution record.
- * `output.success: true` alongside `error` set is exactly the trap the gate found.
- */
-const readClaim = (wait) => ({
-  status: wait.status,
-  outputSuccess: wait.output?.success ?? null,
-  error: wait.error ?? wait.output?.error ?? null,
-  transactionHashes: (wait.transactionHashes ?? []).map((t) => t.hash),
-  gasUsed: wait.output?.gasUsedUnits ?? wait.output?.gasUsed ?? null,
-  sponsored: wait.output?.sponsored ?? null,
-  link: wait.output?.transactionLink ?? null,
-});
-
-/**
- * Cross the claim against independently read state.
- * `silent-failure` is the finding RunProof exists to catch: reported success,
- * nothing changed on chain.
- */
-function verdictOf(claim, assertionPass) {
-  const claimed = claim.status === 'success' && claim.outputSuccess !== false;
-  if (claimed) return assertionPass ? 'verified' : 'silent-failure';
-  return assertionPass ? 'unreported-success' : 'honest-failure';
-}
-
-/** Who actually recovered, judged only by what is visible in the evidence. */
-const recoveryOwnerOf = (claim) => {
-  if (claim.transactionHashes.length > 1) return 'keeperhub'; // retry lands as extra hashes
-  if (claim.transactionHashes.length === 0) return 'none'; // never broadcast, nothing to recover
-  return 'none';
-};
 
 async function runSpec(path) {
   const spec = loadSpec(path);
@@ -117,14 +86,19 @@ for (const p of paths) {
   }
 }
 
+// Exit 0 means every spec observed the behaviour it declared — including the
+// specs that declare a silent failure. Surprise is the only failure mode.
+const bad = results.filter((r) => !r.asExpected);
+
+// The filename carries the outcome. A run that blew up must never sit in the
+// directory looking exactly like a clean one — that is how a throwaway 401 test
+// gets mistaken for a broken demo.
 mkdirSync('evidence', { recursive: true });
-const out = `evidence/run-${Date.now()}`;
+const tag = results.some((r) => r.verdict === 'runner-error') ? 'ERRORED' : bad.length ? 'MISMATCH' : 'ok';
+const out = `evidence/run-${Date.now()}-${tag}`;
 writeFileSync(`${out}.json`, JSON.stringify(results, jsonSafe, 2));
 writeFileSync(`${out}.html`, renderReport(JSON.parse(JSON.stringify(results, jsonSafe))));
 log(`\nEvidence → ${out}.json  ·  ${out}.html`);
 
-// Exit 0 means every spec observed the behaviour it declared — including the
-// specs that declare a silent failure. Surprise is the only failure mode.
-const bad = results.filter((r) => !r.asExpected);
 if (bad.length) log(`${bad.length}/${results.length} spec(s) off-expectation: ${bad.map((r) => r.verdict).join(', ')}`);
 process.exit(bad.length ? 1 : 0);

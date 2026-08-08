@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "run": "node --env-file=.env src/runner.js",
-    "test": "node --env-file=.env src/spec.test.js"
+    "test": "node src/spec.test.js && node src/verdict.test.js && forge test"
   },
   "dependencies": {
     "viem": "^2.21.0"

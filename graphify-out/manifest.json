@@ -1,0 +1,42 @@
+{
+  ".claude/settings.local.json": {
+    "mtime": 1786100811.2445464,
+    "ast_hash": "3af479f2973fbf8a680858821d5852ac",
+    "semantic_hash": "3af479f2973fbf8a680858821d5852ac"
+  },
+  "cache/solidity-files-cache.json": {
+    "mtime": 1786098487.6425407,
+    "ast_hash": "bc87b48bd042ff092bfbcc5db4323973",
+    "semantic_hash": "bc87b48bd042ff092bfbcc5db4323973"
+  },
+  "research-pack.json": {
+    "mtime": 1786084789.3934243,
+    "ast_hash": "272ca1d209dd34528e3c451508dabf6a",
+    "semantic_hash": "272ca1d209dd34528e3c451508dabf6a"
+  },
+  ".superstack/idea-context.md": {
+    "mtime": 1786084789.7292829,
+    "ast_hash": "9520cfaf1fa7b07ea3827ff3f09fc92b",
+    "semantic_hash": "9520cfaf1fa7b07ea3827ff3f09fc92b"
+  },
+  "TEARDOWN.md": {
+    "mtime": 1786101987.2403216,
+    "ast_hash": "0be1de9479bca63f4c2fd7d0de8c4807",
+    "semantic_hash": "0be1de9479bca63f4c2fd7d0de8c4807"
+  },
+  "build-plan-20260807.md": {
+    "mtime": 1786096485.2427697,
+    "ast_hash": "eac5798b1d11b2c96d96c7d3860f66c4",
+    "semantic_hash": "eac5798b1d11b2c96d96c7d3860f66c4"
+  },
+  "hackathon.md": {
+    "mtime": 1786017008.8024483,
+    "ast_hash": "b432dd172372a6b63fe78f4265c29dc8",
+    "semantic_hash": "b432dd172372a6b63fe78f4265c29dc8"
+  },
+  "idea-shortlist-20260806.html": {
+    "mtime": 1786084789.2400005,
+    "ast_hash": "fc111438306991209dac7a78879e3022",
+    "semantic_hash": "fc111438306991209dac7a78879e3022"
+  }
+}
