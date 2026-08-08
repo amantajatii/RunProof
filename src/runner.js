@@ -8,6 +8,7 @@ import {
   waitForExecution,
   executionLogs,
 } from './keeperhub.js';
+import { renderReport } from './report.js';
 
 const jsonSafe = (_, v) => (typeof v === 'bigint' ? v.toString() : v);
 const log = (...a) => console.log(...a);
@@ -117,9 +118,10 @@ for (const p of paths) {
 }
 
 mkdirSync('evidence', { recursive: true });
-const out = `evidence/run-${Date.now()}.json`;
-writeFileSync(out, JSON.stringify(results, jsonSafe, 2));
-log(`\nEvidence → ${out}`);
+const out = `evidence/run-${Date.now()}`;
+writeFileSync(`${out}.json`, JSON.stringify(results, jsonSafe, 2));
+writeFileSync(`${out}.html`, renderReport(JSON.parse(JSON.stringify(results, jsonSafe))));
+log(`\nEvidence → ${out}.json  ·  ${out}.html`);
 
 // Exit 0 means every spec observed the behaviour it declared — including the
 // specs that declare a silent failure. Surprise is the only failure mode.
