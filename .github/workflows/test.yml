@@ -2,7 +2,7 @@ name: test
 
 on: [push, pull_request]
 
-# Offline suite only. The live runner needs a funded deployer key and the
+# No-credentials suite only. The live runner needs a funded deployer key and the
 # KeeperHub org key — neither belongs in CI, so it stays a local/manual run.
 jobs:
   test:

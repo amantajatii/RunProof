@@ -61,6 +61,7 @@ Fill `.env` in this order — `FIXTURE_ADDRESS` comes last because deploying nee
 Then deploy your own fixture and paste the address into `.env` as `FIXTURE_ADDRESS`:
 
 ```bash
+set -a; source .env; set +a          # forge reads flags, not .env
 forge create contracts/Fixture.sol:Fixture \
   --rpc-url "$SEPOLIA_RPC_URL" --private-key "$DEPLOYER_PRIVATE_KEY" --broadcast
 # → "Deployed to: 0x…"  that address is FIXTURE_ADDRESS
@@ -70,7 +71,9 @@ The KeeperHub wallet must be able to call it. `Fixture` has no owner check, so a
 
 ```bash
 node --env-file=.env src/runner.js specs/*.json   # all three scenarios
-pnpm test                                          # offline: spec parser, verdicts, forge test
+pnpm test                                          # spec parser, verdicts, forge test —
+                                                   # no API key and no chain, but forge
+                                                   # fetches solc on a cold cache
 ```
 
 Writes `evidence/run-<ts>-<outcome>.json` (full raw responses, account ids and caller IP
