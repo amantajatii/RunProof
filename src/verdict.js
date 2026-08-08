@@ -17,7 +17,16 @@ export const readClaim = (wait) => ({
  * `silent-failure` is the finding RunProof exists to catch: reported success,
  * nothing changed on chain.
  */
+const TERMINAL = ['success', 'error'];
+
 export function verdictOf(claim, assertionPass) {
+  // /wait can return while the execution is still running — it takes a timeout, not
+  // a guarantee. Reading a verdict off a pending execution would call a slow success
+  // an honest-failure, which is exactly the kind of confident wrong answer RunProof
+  // exists to prevent. No verdict is the correct answer here.
+  if (!TERMINAL.includes(claim.status))
+    throw new Error(`execution is not terminal (status=${claim.status}); no verdict can be read yet`);
+
   const claimed = claim.status === 'success' && claim.outputSuccess !== false;
   if (claimed) return assertionPass ? 'verified' : 'silent-failure';
   return assertionPass ? 'unreported-success' : 'honest-failure';

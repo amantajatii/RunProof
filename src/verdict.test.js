@@ -60,6 +60,11 @@ assert.equal(
   'honest-failure'
 );
 
+// A still-running execution has no verdict. Guessing one turns a slow success into
+// an honest-failure — the run must error out instead.
+for (const status of ['running', 'pending', 'queued', undefined])
+  assert.throws(() => verdictOf(readClaim({ status }), false), /not terminal/, `status=${status}`);
+
 // --- recoveryOwnerOf: only what the evidence shows ---
 assert.equal(recoveryOwnerOf({ transactionHashes: [] }), 'none', 'never broadcast');
 assert.equal(recoveryOwnerOf({ transactionHashes: ['0xa'] }), 'none', 'one tx is not a retry');

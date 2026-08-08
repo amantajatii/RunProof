@@ -11,7 +11,22 @@ import {
 import { renderReport } from './report.js';
 import { readClaim, verdictOf, recoveryOwnerOf } from './verdict.js';
 
-const jsonSafe = (_, v) => (typeof v === 'bigint' ? v.toString() : v);
+// Evidence is meant to be published. KeeperHub's execution record carries account
+// identifiers and the caller's IP; none of it is needed to check a claim against
+// the chain, and all of it would ship to whoever reads the report.
+const REDACTED = new Set([
+  'userId',
+  'organizationId',
+  'triggeredByUserApiKeyId',
+  'triggeredByOrgApiKeyId',
+  'triggeredByIp',
+  'dispatchKey',
+]);
+
+const jsonSafe = (k, v) => {
+  if (REDACTED.has(k)) return v == null ? v : '[redacted]';
+  return typeof v === 'bigint' ? v.toString() : v;
+};
 const log = (...a) => console.log(...a);
 
 async function runSpec(path) {
@@ -25,14 +40,23 @@ async function runSpec(path) {
     log(`  setup   ${spec.setup.item.name}(${spec.setup.args}) → ${r.status} ${r.transactionHash}`);
   }
 
+  let observed = false;
   try {
-    return await observe(clients, spec, path, startedAt);
+    const result = await observe(clients, spec, path, startedAt);
+    observed = true;
+    return result;
   } finally {
     // Always unwind the fixture, even when the API/RPC blew up mid-run — a
     // paused fixture left behind poisons every spec that runs after it.
     if (spec.teardown) {
-      const r = await directWrite(clients, spec, spec.teardown).catch((e) => ({ status: `teardown failed: ${e.message}` }));
-      log(`  teardown ${spec.teardown.item.name}(${spec.teardown.args}) → ${r.status}`);
+      const err = await directWrite(clients, spec, spec.teardown).then(
+        (r) => (log(`  teardown ${spec.teardown.item.name}(${spec.teardown.args}) → ${r.status}`), null),
+        (e) => (log(`  teardown FAILED: ${e.message}`), e),
+      );
+      // A fixture left in an unknown state invalidates every later spec, so this
+      // cannot stay a log line. Only raise it when nothing is already failing —
+      // an unwind error must never bury the failure that caused it.
+      if (err && observed) throw new Error(`teardown failed, fixture state unknown: ${err.message}`);
     }
   }
 }
