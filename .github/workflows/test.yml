@@ -1,0 +1,23 @@
+name: test
+
+on: [push, pull_request]
+
+# Offline suite only. The live runner needs a funded deployer key and the
+# KeeperHub org key — neither belongs in CI, so it stays a local/manual run.
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: foundry-rs/foundry-toolchain@v1
+      - run: node src/spec.test.js && node src/verdict.test.js && forge test
