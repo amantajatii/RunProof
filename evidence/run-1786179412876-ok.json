@@ -1,0 +1,1044 @@
+[
+  {
+    "spec": {
+      "name": "baseline increment",
+      "description": "Happy path: fixture unpaused, increment() lands, count goes up by exactly 1.",
+      "chainId": 11155111,
+      "contract": "0xfc8cb154446563CdCD1c73996918Cd4459a8d176",
+      "setup": {
+        "item": {
+          "name": "setPaused",
+          "type": "function",
+          "stateMutability": "nonpayable",
+          "inputs": [
+            {
+              "type": "bool",
+              "name": "p"
+            }
+          ],
+          "outputs": []
+        },
+        "args": [
+          false
+        ]
+      },
+      "teardown": null,
+      "read": {
+        "name": "count",
+        "type": "function",
+        "stateMutability": "view",
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256"
+          }
+        ]
+      },
+      "precondition": {
+        "op": "gte",
+        "value": "0"
+      },
+      "action": {
+        "item": {
+          "name": "increment",
+          "type": "function",
+          "stateMutability": "nonpayable",
+          "inputs": [],
+          "outputs": []
+        },
+        "args": [],
+        "failOnError": true
+      },
+      "postcondition": {
+        "op": "eq",
+        "delta": "1"
+      },
+      "recovery": "none",
+      "expectVerdict": "verified",
+      "path": "specs/01-baseline-increment.json"
+    },
+    "startedAt": "2026-08-08T08:54:49.948Z",
+    "completedAt": "2026-08-08T08:55:38.398Z",
+    "workflowId": "79y5gcefmrdd97f1ifi5l",
+    "executionId": "2q12r4rgtcxosdbbnf0ua",
+    "claim": {
+      "status": "success",
+      "outputSuccess": true,
+      "error": null,
+      "transactionHashes": [
+        "0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1"
+      ],
+      "gasUsed": "50814",
+      "sponsored": true,
+      "link": "https://sepolia.etherscan.io/tx/0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1"
+    },
+    "state": {
+      "pre": "6",
+      "post": "7",
+      "expected": "7",
+      "assertionPass": true
+    },
+    "verdict": "verified",
+    "expectVerdict": "verified",
+    "asExpected": true,
+    "recovery": {
+      "expected": "none",
+      "observed": "none",
+      "match": true
+    },
+    "raw": {
+      "wait": {
+        "executionId": "2q12r4rgtcxosdbbnf0ua",
+        "status": "success",
+        "completed": true,
+        "transactionHashes": [
+          {
+            "hash": "0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1",
+            "nodeId": "step-1",
+            "chainId": 11155111,
+            "gasUsed": "50814",
+            "nodeName": "baseline increment",
+            "verified": true,
+            "verifiedAt": "2026-08-08T08:55:37.747Z",
+            "blockNumber": 11444219,
+            "receiptStatus": "success"
+          }
+        ],
+        "output": {
+          "chainId": 11155111,
+          "gasUsed": "50814",
+          "success": true,
+          "sponsored": true,
+          "executedCall": {
+            "args": {},
+            "reverted": false,
+            "sponsored": true,
+            "topLevelTo": "0x5af5194b4b0909eb978e3cf1e25333852277f07d",
+            "functionName": "increment",
+            "contractAddress": "0xfc8cb154446563cdcd1c73996918cd4459a8d176",
+            "functionSignature": "increment()"
+          },
+          "gasUsedUnits": "50814",
+          "transactionHash": "0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1",
+          "transactionLink": "https://sepolia.etherscan.io/tx/0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1",
+          "effectiveGasPrice": "1116133413"
+        },
+        "error": null,
+        "gasUsedWei": "50814",
+        "completedAt": "2026-08-08T08:55:37.835Z"
+      },
+      "logs": {
+        "execution": {
+          "id": "2q12r4rgtcxosdbbnf0ua",
+          "workflowId": "79y5gcefmrdd97f1ifi5l",
+          "userId": "[redacted]",
+          "status": "success",
+          "input": {},
+          "output": {
+            "chainId": 11155111,
+            "gasUsed": "50814",
+            "success": true,
+            "sponsored": true,
+            "executedCall": {
+              "args": {},
+              "reverted": false,
+              "sponsored": true,
+              "topLevelTo": "0x5af5194b4b0909eb978e3cf1e25333852277f07d",
+              "functionName": "increment",
+              "contractAddress": "0xfc8cb154446563cdcd1c73996918cd4459a8d176",
+              "functionSignature": "increment()"
+            },
+            "gasUsedUnits": "50814",
+            "transactionHash": "0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1",
+            "transactionLink": "https://sepolia.etherscan.io/tx/0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1",
+            "effectiveGasPrice": "1116133413"
+          },
+          "error": null,
+          "errorCategory": null,
+          "errorType": null,
+          "errorCode": null,
+          "startedAt": "2026-08-08T08:55:26.496Z",
+          "completedAt": "2026-08-08T08:55:37.835Z",
+          "duration": "11214",
+          "totalSteps": null,
+          "completedSteps": "2",
+          "currentNodeId": null,
+          "currentNodeName": null,
+          "lastSuccessfulNodeId": "step-1",
+          "lastSuccessfulNodeName": "baseline increment",
+          "executionTrace": [
+            "trigger-1",
+            "step-1"
+          ],
+          "runId": "wrun_01KZG9B4HDAFQPF0E0ZS1MCQW5",
+          "transactionHashes": [
+            {
+              "hash": "0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1",
+              "nodeId": "step-1",
+              "chainId": 11155111,
+              "gasUsed": "50814",
+              "nodeName": "baseline increment",
+              "verified": true,
+              "verifiedAt": "2026-08-08T08:55:37.747Z",
+              "blockNumber": 11444219,
+              "receiptStatus": "success"
+            }
+          ],
+          "gasUsedWei": "50814",
+          "billable": true,
+          "triggeredByUserApiKeyId": null,
+          "triggeredByOrgApiKeyId": "[redacted]",
+          "triggeredByIp": "[redacted]",
+          "triggeredByCountry": "ID",
+          "triggerSource": "manual",
+          "triggeredByCredentialType": "org_api_key",
+          "triggeredByCredentialLabel": null,
+          "executedWorkflowHash": "69955974d4855be6accc48a801ed90ba5f3bf63c0c30f55b77b39e1050c2e7c7",
+          "dispatchKey": null,
+          "deletedAt": null,
+          "workflow": {
+            "id": "79y5gcefmrdd97f1ifi5l",
+            "name": "RunProof — baseline increment",
+            "description": "Happy path: fixture unpaused, increment() lands, count goes up by exactly 1.",
+            "userId": "[redacted]",
+            "organizationId": "[redacted]",
+            "isAnonymous": false,
+            "featured": false,
+            "featuredOrder": 0,
+            "featuredProtocol": null,
+            "featuredProtocolOrder": 0,
+            "projectId": null,
+            "tagId": null,
+            "nodes": [
+              {
+                "id": "trigger-1",
+                "data": {
+                  "type": "trigger",
+                  "label": "Trigger",
+                  "config": {
+                    "triggerType": "Manual"
+                  },
+                  "status": "idle"
+                },
+                "type": "trigger",
+                "position": {
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "id": "step-1",
+                "data": {
+                  "type": "action",
+                  "label": "baseline increment",
+                  "config": {
+                    "abi": "[{\"name\":\"increment\",\"type\":\"function\",\"stateMutability\":\"nonpayable\",\"inputs\":[],\"outputs\":[]}]",
+                    "network": "11155111",
+                    "actionType": "web3/write-contract",
+                    "abiFunction": "increment",
+                    "failOnError": true,
+                    "functionArgs": "[]",
+                    "contractAddress": "0xfc8cb154446563CdCD1c73996918Cd4459a8d176"
+                  },
+                  "status": "idle"
+                },
+                "type": "action",
+                "position": {
+                  "x": 252,
+                  "y": 0
+                }
+              }
+            ],
+            "edges": [
+              {
+                "id": "e-trigger-1-step-1",
+                "source": "trigger-1",
+                "target": "step-1"
+              }
+            ],
+            "visibility": "private",
+            "enabled": false,
+            "sourceWorkflowId": null,
+            "createdAt": "2026-08-08T08:55:25.464Z",
+            "updatedAt": "2026-08-08T08:55:25.464Z",
+            "seededAt": null,
+            "isListed": false,
+            "listedSlug": null,
+            "listedAt": null,
+            "inputSchema": null,
+            "outputMapping": null,
+            "priceUsdcPerCall": null,
+            "workflowType": "read",
+            "category": null,
+            "chain": null,
+            "listingVersion": 1,
+            "deletedAt": null,
+            "deactivatedAt": null
+          }
+        },
+        "logs": [
+          {
+            "id": "u5v6x37yd4aa2gg1fflza",
+            "executionId": "2q12r4rgtcxosdbbnf0ua",
+            "nodeId": "step-1",
+            "nodeName": "baseline increment",
+            "nodeType": "web3/write-contract",
+            "status": "success",
+            "input": {
+              "abi": "[{\"name\":\"increment\",\"type\":\"function\",\"stateMutability\":\"nonpayable\",\"inputs\":[],\"outputs\":[]}]",
+              "network": "11155111",
+              "condition": null,
+              "actionType": "web3/write-contract",
+              "_actionType": "web3/write-contract",
+              "abiFunction": "increment",
+              "failOnError": true,
+              "functionArgs": "[]",
+              "conditionConfig": null,
+              "contractAddress": "0xfc8cb154446563CdCD1c73996918Cd4459a8d176",
+              "contractAddressLink": "https://sepolia.etherscan.io/address/0xfc8cb154446563CdCD1c73996918Cd4459a8d176"
+            },
+            "output": {
+              "chainId": 11155111,
+              "gasUsed": "50814",
+              "success": true,
+              "sponsored": true,
+              "executedCall": {
+                "args": {},
+                "reverted": false,
+                "sponsored": true,
+                "topLevelTo": "0x5af5194b4b0909eb978e3cf1e25333852277f07d",
+                "functionName": "increment",
+                "contractAddress": "0xfc8cb154446563cdcd1c73996918cd4459a8d176",
+                "functionSignature": "increment()"
+              },
+              "gasUsedUnits": "50814",
+              "transactionHash": "0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1",
+              "transactionLink": "https://sepolia.etherscan.io/tx/0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1",
+              "effectiveGasPrice": "1116133413"
+            },
+            "outputRaw": {
+              "chainId": 11155111,
+              "gasUsed": "50814",
+              "success": true,
+              "sponsored": true,
+              "executedCall": {
+                "args": {},
+                "reverted": false,
+                "sponsored": true,
+                "topLevelTo": "0x5af5194b4b0909eb978e3cf1e25333852277f07d",
+                "functionName": "increment",
+                "contractAddress": "0xfc8cb154446563cdcd1c73996918cd4459a8d176",
+                "functionSignature": "increment()"
+              },
+              "gasUsedUnits": "50814",
+              "transactionHash": "0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1",
+              "transactionLink": "https://sepolia.etherscan.io/tx/0x62c27aafcfa282f484fc9a33b60d08baf3cd2f8de370c7a1a45ec24456fe7cf1",
+              "effectiveGasPrice": "1116133413"
+            },
+            "error": null,
+            "startedAt": "2026-08-08T08:55:26.683Z",
+            "completedAt": "2026-08-08T08:55:37.660Z",
+            "duration": "10972",
+            "timestamp": "2026-08-08T08:55:26.683Z",
+            "iterationIndex": null,
+            "forEachNodeId": null,
+            "network": "11155111",
+            "gasUsedWei": "50814"
+          },
+          {
+            "id": "qlekq07lxidhhserwiuek",
+            "executionId": "2q12r4rgtcxosdbbnf0ua",
+            "nodeId": "trigger-1",
+            "nodeName": "Trigger",
+            "nodeType": "trigger",
+            "status": "success",
+            "input": {
+              "triggerData": {
+                "timestamp": 1786179326527,
+                "triggered": true,
+                "triggeredAt": "2026-08-08T08:55:26.527Z"
+              }
+            },
+            "output": {
+              "data": {
+                "timestamp": 1786179326527,
+                "triggered": true,
+                "triggeredAt": "2026-08-08T08:55:26.527Z"
+              },
+              "success": true
+            },
+            "outputRaw": {
+              "data": {
+                "timestamp": 1786179326527,
+                "triggered": true,
+                "triggeredAt": "2026-08-08T08:55:26.527Z"
+              },
+              "success": true
+            },
+            "error": null,
+            "startedAt": "2026-08-08T08:55:26.588Z",
+            "completedAt": "2026-08-08T08:55:26.595Z",
+            "duration": "2",
+            "timestamp": "2026-08-08T08:55:26.589Z",
+            "iterationIndex": null,
+            "forEachNodeId": null,
+            "network": null,
+            "gasUsedWei": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "spec": {
+      "name": "revert, fail closed",
+      "description": "Fixture paused. failOnError: true. KeeperHub catches the revert in simulation, never broadcasts, and reports the error honestly. Zero gas burned.",
+      "chainId": 11155111,
+      "contract": "0xfc8cb154446563CdCD1c73996918Cd4459a8d176",
+      "setup": {
+        "item": {
+          "name": "setPaused",
+          "type": "function",
+          "stateMutability": "nonpayable",
+          "inputs": [
+            {
+              "type": "bool",
+              "name": "p"
+            }
+          ],
+          "outputs": []
+        },
+        "args": [
+          true
+        ]
+      },
+      "teardown": {
+        "item": {
+          "name": "setPaused",
+          "type": "function",
+          "stateMutability": "nonpayable",
+          "inputs": [
+            {
+              "type": "bool",
+              "name": "p"
+            }
+          ],
+          "outputs": []
+        },
+        "args": [
+          false
+        ]
+      },
+      "read": {
+        "name": "count",
+        "type": "function",
+        "stateMutability": "view",
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256"
+          }
+        ]
+      },
+      "precondition": null,
+      "action": {
+        "item": {
+          "name": "increment",
+          "type": "function",
+          "stateMutability": "nonpayable",
+          "inputs": [],
+          "outputs": []
+        },
+        "args": [],
+        "failOnError": true
+      },
+      "postcondition": {
+        "op": "eq",
+        "delta": "1"
+      },
+      "recovery": "none",
+      "expectVerdict": "honest-failure",
+      "path": "specs/02-revert-fail-closed.json"
+    },
+    "startedAt": "2026-08-08T08:55:38.405Z",
+    "completedAt": "2026-08-08T08:56:29.302Z",
+    "workflowId": "amkrfyodduv21xq0mxmvi",
+    "executionId": "vg9bz548lbd5h9b07l261",
+    "claim": {
+      "status": "error",
+      "outputSuccess": null,
+      "error": "Contract call failed: Error(paused)",
+      "transactionHashes": [],
+      "gasUsed": null,
+      "sponsored": null,
+      "link": null
+    },
+    "state": {
+      "pre": "7",
+      "post": "7",
+      "expected": "8",
+      "assertionPass": false
+    },
+    "verdict": "honest-failure",
+    "expectVerdict": "honest-failure",
+    "asExpected": true,
+    "recovery": {
+      "expected": "none",
+      "observed": "none",
+      "match": true
+    },
+    "raw": {
+      "wait": {
+        "executionId": "vg9bz548lbd5h9b07l261",
+        "status": "error",
+        "completed": true,
+        "transactionHashes": [],
+        "output": null,
+        "error": "Contract call failed: Error(paused)",
+        "gasUsedWei": null,
+        "completedAt": "2026-08-08T08:56:10.651Z"
+      },
+      "logs": {
+        "execution": {
+          "id": "vg9bz548lbd5h9b07l261",
+          "workflowId": "amkrfyodduv21xq0mxmvi",
+          "userId": "[redacted]",
+          "status": "error",
+          "input": {},
+          "output": null,
+          "error": "Contract call failed: Error(paused)",
+          "errorCategory": "transaction",
+          "errorType": "user",
+          "errorCode": null,
+          "startedAt": "2026-08-08T08:56:08.515Z",
+          "completedAt": "2026-08-08T08:56:10.651Z",
+          "duration": "2094",
+          "totalSteps": null,
+          "completedSteps": "2",
+          "currentNodeId": null,
+          "currentNodeName": null,
+          "lastSuccessfulNodeId": "trigger-1",
+          "lastSuccessfulNodeName": "Trigger",
+          "executionTrace": [
+            "trigger-1",
+            "step-1"
+          ],
+          "runId": "wrun_01KZG9CDJJGNSBD787SBAE0FA5",
+          "transactionHashes": [],
+          "gasUsedWei": null,
+          "billable": true,
+          "triggeredByUserApiKeyId": null,
+          "triggeredByOrgApiKeyId": "[redacted]",
+          "triggeredByIp": "[redacted]",
+          "triggeredByCountry": "ID",
+          "triggerSource": "manual",
+          "triggeredByCredentialType": "org_api_key",
+          "triggeredByCredentialLabel": null,
+          "executedWorkflowHash": "e0fff69854a39028244935a7d52a568aa93bf6938fa25de8d5e226cf0d011eb4",
+          "dispatchKey": null,
+          "deletedAt": null,
+          "workflow": {
+            "id": "amkrfyodduv21xq0mxmvi",
+            "name": "RunProof — revert, fail closed",
+            "description": "Fixture paused. failOnError: true. KeeperHub catches the revert in simulation, never broadcasts, and reports the error honestly. Zero gas burned.",
+            "userId": "[redacted]",
+            "organizationId": "[redacted]",
+            "isAnonymous": false,
+            "featured": false,
+            "featuredOrder": 0,
+            "featuredProtocol": null,
+            "featuredProtocolOrder": 0,
+            "projectId": null,
+            "tagId": null,
+            "nodes": [
+              {
+                "id": "trigger-1",
+                "data": {
+                  "type": "trigger",
+                  "label": "Trigger",
+                  "config": {
+                    "triggerType": "Manual"
+                  },
+                  "status": "idle"
+                },
+                "type": "trigger",
+                "position": {
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "id": "step-1",
+                "data": {
+                  "type": "action",
+                  "label": "revert, fail closed",
+                  "config": {
+                    "abi": "[{\"name\":\"increment\",\"type\":\"function\",\"stateMutability\":\"nonpayable\",\"inputs\":[],\"outputs\":[]}]",
+                    "network": "11155111",
+                    "actionType": "web3/write-contract",
+                    "abiFunction": "increment",
+                    "failOnError": true,
+                    "functionArgs": "[]",
+                    "contractAddress": "0xfc8cb154446563CdCD1c73996918Cd4459a8d176"
+                  },
+                  "status": "idle"
+                },
+                "type": "action",
+                "position": {
+                  "x": 252,
+                  "y": 0
+                }
+              }
+            ],
+            "edges": [
+              {
+                "id": "e-trigger-1-step-1",
+                "source": "trigger-1",
+                "target": "step-1"
+              }
+            ],
+            "visibility": "private",
+            "enabled": false,
+            "sourceWorkflowId": null,
+            "createdAt": "2026-08-08T08:56:07.482Z",
+            "updatedAt": "2026-08-08T08:56:07.482Z",
+            "seededAt": null,
+            "isListed": false,
+            "listedSlug": null,
+            "listedAt": null,
+            "inputSchema": null,
+            "outputMapping": null,
+            "priceUsdcPerCall": null,
+            "workflowType": "read",
+            "category": null,
+            "chain": null,
+            "listingVersion": 1,
+            "deletedAt": null,
+            "deactivatedAt": null
+          }
+        },
+        "logs": [
+          {
+            "id": "kzlbcekhky86oo95bt0f5",
+            "executionId": "vg9bz548lbd5h9b07l261",
+            "nodeId": "step-1",
+            "nodeName": "revert, fail closed",
+            "nodeType": "web3/write-contract",
+            "status": "error",
+            "input": {
+              "abi": "[{\"name\":\"increment\",\"type\":\"function\",\"stateMutability\":\"nonpayable\",\"inputs\":[],\"outputs\":[]}]",
+              "network": "11155111",
+              "condition": null,
+              "actionType": "web3/write-contract",
+              "_actionType": "web3/write-contract",
+              "abiFunction": "increment",
+              "failOnError": true,
+              "functionArgs": "[]",
+              "conditionConfig": null,
+              "contractAddress": "0xfc8cb154446563CdCD1c73996918Cd4459a8d176",
+              "contractAddressLink": "https://sepolia.etherscan.io/address/0xfc8cb154446563CdCD1c73996918Cd4459a8d176"
+            },
+            "output": {
+              "error": "Contract call failed: Error(paused)",
+              "success": false,
+              "rejection": {
+                "kind": "contract-custom",
+                "name": "Error"
+              }
+            },
+            "outputRaw": {
+              "error": "Contract call failed: Error(paused)",
+              "success": false,
+              "rejection": {
+                "kind": "contract-custom",
+                "name": "Error"
+              }
+            },
+            "error": "Contract call failed: Error(paused)",
+            "startedAt": "2026-08-08T08:56:08.703Z",
+            "completedAt": "2026-08-08T08:56:10.573Z",
+            "duration": "1865",
+            "timestamp": "2026-08-08T08:56:08.703Z",
+            "iterationIndex": null,
+            "forEachNodeId": null,
+            "network": "11155111",
+            "gasUsedWei": null
+          },
+          {
+            "id": "t8ycepw5ac94s3y8hk7ns",
+            "executionId": "vg9bz548lbd5h9b07l261",
+            "nodeId": "trigger-1",
+            "nodeName": "Trigger",
+            "nodeType": "trigger",
+            "status": "success",
+            "input": {
+              "triggerData": {
+                "timestamp": 1786179368549,
+                "triggered": true,
+                "triggeredAt": "2026-08-08T08:56:08.549Z"
+              }
+            },
+            "output": {
+              "data": {
+                "timestamp": 1786179368549,
+                "triggered": true,
+                "triggeredAt": "2026-08-08T08:56:08.549Z"
+              },
+              "success": true
+            },
+            "outputRaw": {
+              "data": {
+                "timestamp": 1786179368549,
+                "triggered": true,
+                "triggeredAt": "2026-08-08T08:56:08.549Z"
+              },
+              "success": true
+            },
+            "error": null,
+            "startedAt": "2026-08-08T08:56:08.608Z",
+            "completedAt": "2026-08-08T08:56:08.615Z",
+            "duration": "2",
+            "timestamp": "2026-08-08T08:56:08.608Z",
+            "iterationIndex": null,
+            "forEachNodeId": null,
+            "network": null,
+            "gasUsedWei": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "spec": {
+      "name": "silent failure, failOnError off",
+      "description": "Same paused fixture, failOnError: false. KeeperHub reports status success and output.success true for an operation that never happened. count() is unchanged. This is the finding RunProof exists to catch.",
+      "chainId": 11155111,
+      "contract": "0xfc8cb154446563CdCD1c73996918Cd4459a8d176",
+      "setup": {
+        "item": {
+          "name": "setPaused",
+          "type": "function",
+          "stateMutability": "nonpayable",
+          "inputs": [
+            {
+              "type": "bool",
+              "name": "p"
+            }
+          ],
+          "outputs": []
+        },
+        "args": [
+          true
+        ]
+      },
+      "teardown": {
+        "item": {
+          "name": "setPaused",
+          "type": "function",
+          "stateMutability": "nonpayable",
+          "inputs": [
+            {
+              "type": "bool",
+              "name": "p"
+            }
+          ],
+          "outputs": []
+        },
+        "args": [
+          false
+        ]
+      },
+      "read": {
+        "name": "count",
+        "type": "function",
+        "stateMutability": "view",
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256"
+          }
+        ]
+      },
+      "precondition": null,
+      "action": {
+        "item": {
+          "name": "increment",
+          "type": "function",
+          "stateMutability": "nonpayable",
+          "inputs": [],
+          "outputs": []
+        },
+        "args": [],
+        "failOnError": false
+      },
+      "postcondition": {
+        "op": "eq",
+        "delta": "1"
+      },
+      "recovery": "none",
+      "expectVerdict": "silent-failure",
+      "path": "specs/03-silent-failure.json"
+    },
+    "startedAt": "2026-08-08T08:56:29.306Z",
+    "completedAt": "2026-08-08T08:56:52.876Z",
+    "workflowId": "mtd8sq0cplx9xf8v8g5rj",
+    "executionId": "hkfyzlntxekq7l5y4e9c6",
+    "claim": {
+      "status": "success",
+      "outputSuccess": true,
+      "error": "Contract call failed: Error(paused)",
+      "transactionHashes": [],
+      "gasUsed": null,
+      "sponsored": null,
+      "link": null
+    },
+    "state": {
+      "pre": "7",
+      "post": "7",
+      "expected": "8",
+      "assertionPass": false
+    },
+    "verdict": "silent-failure",
+    "expectVerdict": "silent-failure",
+    "asExpected": true,
+    "recovery": {
+      "expected": "none",
+      "observed": "none",
+      "match": true
+    },
+    "raw": {
+      "wait": {
+        "executionId": "hkfyzlntxekq7l5y4e9c6",
+        "status": "success",
+        "completed": true,
+        "transactionHashes": [],
+        "output": {
+          "error": "Contract call failed: Error(paused)",
+          "success": true,
+          "rejection": {
+            "kind": "contract-custom",
+            "name": "Error"
+          }
+        },
+        "error": null,
+        "gasUsedWei": null,
+        "completedAt": "2026-08-08T08:56:42.597Z"
+      },
+      "logs": {
+        "execution": {
+          "id": "hkfyzlntxekq7l5y4e9c6",
+          "workflowId": "mtd8sq0cplx9xf8v8g5rj",
+          "userId": "[redacted]",
+          "status": "success",
+          "input": {},
+          "output": {
+            "error": "Contract call failed: Error(paused)",
+            "success": true,
+            "rejection": {
+              "kind": "contract-custom",
+              "name": "Error"
+            }
+          },
+          "error": null,
+          "errorCategory": null,
+          "errorType": null,
+          "errorCode": null,
+          "startedAt": "2026-08-08T08:56:40.643Z",
+          "completedAt": "2026-08-08T08:56:42.597Z",
+          "duration": "1923",
+          "totalSteps": null,
+          "completedSteps": "2",
+          "currentNodeId": null,
+          "currentNodeName": null,
+          "lastSuccessfulNodeId": "step-1",
+          "lastSuccessfulNodeName": "silent failure, failOnError off",
+          "executionTrace": [
+            "trigger-1",
+            "step-1"
+          ],
+          "runId": "wrun_01KZG9DCYGBE2YWP0X73R2KEE3",
+          "transactionHashes": [],
+          "gasUsedWei": null,
+          "billable": true,
+          "triggeredByUserApiKeyId": null,
+          "triggeredByOrgApiKeyId": "[redacted]",
+          "triggeredByIp": "[redacted]",
+          "triggeredByCountry": "ID",
+          "triggerSource": "manual",
+          "triggeredByCredentialType": "org_api_key",
+          "triggeredByCredentialLabel": null,
+          "executedWorkflowHash": "13fe73824d6ed94e124d33c5a2930f8d0a79901e9fc650d17186c6dc2a3efc3c",
+          "dispatchKey": null,
+          "deletedAt": null,
+          "workflow": {
+            "id": "mtd8sq0cplx9xf8v8g5rj",
+            "name": "RunProof — silent failure, failOnError off",
+            "description": "Same paused fixture, failOnError: false. KeeperHub reports status success and output.success true for an operation that never happened. count() is unchanged. This is the finding RunProof exists to catch.",
+            "userId": "[redacted]",
+            "organizationId": "[redacted]",
+            "isAnonymous": false,
+            "featured": false,
+            "featuredOrder": 0,
+            "featuredProtocol": null,
+            "featuredProtocolOrder": 0,
+            "projectId": null,
+            "tagId": null,
+            "nodes": [
+              {
+                "id": "trigger-1",
+                "data": {
+                  "type": "trigger",
+                  "label": "Trigger",
+                  "config": {
+                    "triggerType": "Manual"
+                  },
+                  "status": "idle"
+                },
+                "type": "trigger",
+                "position": {
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "id": "step-1",
+                "data": {
+                  "type": "action",
+                  "label": "silent failure, failOnError off",
+                  "config": {
+                    "abi": "[{\"name\":\"increment\",\"type\":\"function\",\"stateMutability\":\"nonpayable\",\"inputs\":[],\"outputs\":[]}]",
+                    "network": "11155111",
+                    "actionType": "web3/write-contract",
+                    "abiFunction": "increment",
+                    "failOnError": false,
+                    "functionArgs": "[]",
+                    "contractAddress": "0xfc8cb154446563CdCD1c73996918Cd4459a8d176"
+                  },
+                  "status": "idle"
+                },
+                "type": "action",
+                "position": {
+                  "x": 252,
+                  "y": 0
+                }
+              }
+            ],
+            "edges": [
+              {
+                "id": "e-trigger-1-step-1",
+                "source": "trigger-1",
+                "target": "step-1"
+              }
+            ],
+            "visibility": "private",
+            "enabled": false,
+            "sourceWorkflowId": null,
+            "createdAt": "2026-08-08T08:56:40.315Z",
+            "updatedAt": "2026-08-08T08:56:40.315Z",
+            "seededAt": null,
+            "isListed": false,
+            "listedSlug": null,
+            "listedAt": null,
+            "inputSchema": null,
+            "outputMapping": null,
+            "priceUsdcPerCall": null,
+            "workflowType": "read",
+            "category": null,
+            "chain": null,
+            "listingVersion": 1,
+            "deletedAt": null,
+            "deactivatedAt": null
+          }
+        },
+        "logs": [
+          {
+            "id": "2a3wjx6adoweqno92zyd2",
+            "executionId": "hkfyzlntxekq7l5y4e9c6",
+            "nodeId": "step-1",
+            "nodeName": "silent failure, failOnError off",
+            "nodeType": "web3/write-contract",
+            "status": "success",
+            "input": {
+              "abi": "[{\"name\":\"increment\",\"type\":\"function\",\"stateMutability\":\"nonpayable\",\"inputs\":[],\"outputs\":[]}]",
+              "network": "11155111",
+              "condition": null,
+              "actionType": "web3/write-contract",
+              "_actionType": "web3/write-contract",
+              "abiFunction": "increment",
+              "failOnError": false,
+              "functionArgs": "[]",
+              "conditionConfig": null,
+              "contractAddress": "0xfc8cb154446563CdCD1c73996918Cd4459a8d176",
+              "contractAddressLink": "https://sepolia.etherscan.io/address/0xfc8cb154446563CdCD1c73996918Cd4459a8d176"
+            },
+            "output": {
+              "error": "Contract call failed: Error(paused)",
+              "success": true,
+              "rejection": {
+                "kind": "contract-custom",
+                "name": "Error"
+              }
+            },
+            "outputRaw": {
+              "error": "Contract call failed: Error(paused)",
+              "success": true,
+              "rejection": {
+                "kind": "contract-custom",
+                "name": "Error"
+              }
+            },
+            "error": null,
+            "startedAt": "2026-08-08T08:56:40.802Z",
+            "completedAt": "2026-08-08T08:56:42.501Z",
+            "duration": "1695",
+            "timestamp": "2026-08-08T08:56:40.802Z",
+            "iterationIndex": null,
+            "forEachNodeId": null,
+            "network": "11155111",
+            "gasUsedWei": null
+          },
+          {
+            "id": "q0rmd62cnvefh3diwpxta",
+            "executionId": "hkfyzlntxekq7l5y4e9c6",
+            "nodeId": "trigger-1",
+            "nodeName": "Trigger",
+            "nodeType": "trigger",
+            "status": "success",
+            "input": {
+              "triggerData": {
+                "timestamp": 1786179400670,
+                "triggered": true,
+                "triggeredAt": "2026-08-08T08:56:40.670Z"
+              }
+            },
+            "output": {
+              "data": {
+                "timestamp": 1786179400670,
+                "triggered": true,
+                "triggeredAt": "2026-08-08T08:56:40.670Z"
+              },
+              "success": true
+            },
+            "outputRaw": {
+              "data": {
+                "timestamp": 1786179400670,
+                "triggered": true,
+                "triggeredAt": "2026-08-08T08:56:40.670Z"
+              },
+              "success": true
+            },
+            "error": null,
+            "startedAt": "2026-08-08T08:56:40.722Z",
+            "completedAt": "2026-08-08T08:56:40.728Z",
+            "duration": "2",
+            "timestamp": "2026-08-08T08:56:40.722Z",
+            "iterationIndex": null,
+            "forEachNodeId": null,
+            "network": null,
+            "gasUsedWei": null
+          }
+        ]
+      }
+    }
+  }
+]

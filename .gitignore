@@ -1,9 +1,11 @@
 .env
 .DS_Store
-gate-findings.md
 raw/
 node_modules/
-evidence/
+evidence/*
+# One real run is committed so the report is readable without running anything.
+!evidence/run-1786179412876-ok.json
+!evidence/run-1786179412876-ok.html
 cache/
 out/
 graphify-out/
