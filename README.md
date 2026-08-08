@@ -26,8 +26,9 @@ cp .env.example .env      # fill in KEEPERHUB_API_KEY, SEPOLIA_RPC_URL, FIXTURE_
 node --env-file=.env src/runner.js specs/*.json
 ```
 
-Writes `evidence/run-<ts>.json` (full raw responses) and `evidence/run-<ts>.html`
-(a static report, no server, no framework). Exit code 0 means every spec observed the
+Writes `evidence/run-<ts>-<outcome>.json` (full raw responses) and a matching `.html`
+(a static report, no server, no framework). The outcome tag is `ok`, `MISMATCH`, or `ERRORED`,
+so a run that blew up never looks like a clean one on disk. Exit code 0 means every spec observed the
 behaviour it declared — including specs that declare a failure.
 
 `pnpm test` runs the spec-parser and verdict self-checks plus `forge test` on the fixture.
