@@ -1,0 +1,13 @@
+{
+  "name": "silent failure, failOnError off",
+  "description": "Same paused fixture, failOnError: false. KeeperHub reports status success and output.success true for an operation that never happened. count() is unchanged. This is the finding RunProof exists to catch.",
+  "chainId": 11155111,
+  "contract": "$FIXTURE_ADDRESS",
+  "setup": { "sig": "function setPaused(bool p)", "args": [true] },
+  "teardown": { "sig": "function setPaused(bool p)", "args": [false] },
+  "read": "function count() view returns (uint256)",
+  "action": { "sig": "function increment()", "args": [], "failOnError": false },
+  "postcondition": { "op": "eq", "delta": "1" },
+  "recovery": { "expect": "none" },
+  "expectVerdict": "silent-failure"
+}

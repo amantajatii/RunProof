@@ -1,2 +1,8 @@
 .env
 .DS_Store
+gate-findings.md
+raw/
+node_modules/
+evidence/
+cache/
+out/

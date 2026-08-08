@@ -1,0 +1,13 @@
+{
+  "name": "revert, fail closed",
+  "description": "Fixture paused. failOnError: true. KeeperHub catches the revert in simulation, never broadcasts, and reports the error honestly. Zero gas burned.",
+  "chainId": 11155111,
+  "contract": "$FIXTURE_ADDRESS",
+  "setup": { "sig": "function setPaused(bool p)", "args": [true] },
+  "teardown": { "sig": "function setPaused(bool p)", "args": [false] },
+  "read": "function count() view returns (uint256)",
+  "action": { "sig": "function increment()", "args": [], "failOnError": true },
+  "postcondition": { "op": "eq", "delta": "1" },
+  "recovery": { "expect": "none" },
+  "expectVerdict": "honest-failure"
+}

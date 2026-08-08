@@ -1,0 +1,13 @@
+{
+  "name": "runproof",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "run": "node --env-file=.env src/runner.js",
+    "test": "node --env-file=.env src/spec.test.js"
+  },
+  "dependencies": {
+    "viem": "^2.21.0"
+  }
+}

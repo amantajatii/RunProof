@@ -1,0 +1,13 @@
+{
+  "name": "baseline increment",
+  "description": "Happy path: fixture unpaused, increment() lands, count goes up by exactly 1.",
+  "chainId": 11155111,
+  "contract": "$FIXTURE_ADDRESS",
+  "setup": { "sig": "function setPaused(bool p)", "args": [false] },
+  "read": "function count() view returns (uint256)",
+  "precondition": { "op": "gte", "value": "0" },
+  "action": { "sig": "function increment()", "args": [], "failOnError": true },
+  "postcondition": { "op": "eq", "delta": "1" },
+  "recovery": { "expect": "none" },
+  "expectVerdict": "verified"
+}
