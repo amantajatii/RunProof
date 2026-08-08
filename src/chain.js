@@ -13,6 +13,10 @@ const chainById = (id) =>
  * That independence is the whole point: a reported success is only a claim.
  */
 export function makeClients(chainId) {
+  // Only Sepolia is wired up: there is one RPC env var. Reject anything else
+  // rather than silently reading the wrong chain.
+  if (chainId !== chains.sepolia.id)
+    throw new Error(`only chainId ${chains.sepolia.id} (sepolia) is supported, spec asked for ${chainId}`);
   const rpcUrl = process.env.SEPOLIA_RPC_URL;
   if (!rpcUrl) throw new Error('SEPOLIA_RPC_URL is not set');
   const chain = chainById(chainId);

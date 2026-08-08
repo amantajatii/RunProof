@@ -25,6 +25,19 @@ async function runSpec(path) {
     log(`  setup   ${spec.setup.item.name}(${spec.setup.args}) → ${r.status} ${r.transactionHash}`);
   }
 
+  try {
+    return await observe(clients, spec, path, startedAt);
+  } finally {
+    // Always unwind the fixture, even when the API/RPC blew up mid-run — a
+    // paused fixture left behind poisons every spec that runs after it.
+    if (spec.teardown) {
+      const r = await directWrite(clients, spec, spec.teardown).catch((e) => ({ status: `teardown failed: ${e.message}` }));
+      log(`  teardown ${spec.teardown.item.name}(${spec.teardown.args}) → ${r.status}`);
+    }
+  }
+}
+
+async function observe(clients, spec, path, startedAt) {
   const pre = await readState(clients, spec);
   log(`  pre     ${spec.read.name}() = ${pre}`);
 
@@ -43,11 +56,6 @@ async function runSpec(path) {
   const post = await readState(clients, spec);
   const assertion = check(spec.postcondition, post, pre);
   log(`  post    ${spec.read.name}() = ${post}  expected ${spec.postcondition.op} ${assertion.target} → ${assertion.pass ? 'PASS' : 'FAIL'}`);
-
-  if (spec.teardown) {
-    const r = await directWrite(clients, spec, spec.teardown);
-    log(`  teardown ${spec.teardown.item.name}(${spec.teardown.args}) → ${r.status}`);
-  }
 
   const verdict = verdictOf(claim, assertion.pass);
   const recoveryOwner = recoveryOwnerOf(claim);
