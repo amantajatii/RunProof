@@ -1,4 +1,6 @@
-# RunProof
+<p align="center">
+  <img src="runproof-logo.png" alt="RunProof" width="360">
+</p>
 
 A reported success is only a claim until the chain agrees.
 
