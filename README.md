@@ -6,6 +6,8 @@ A reported success is only a claim until the chain agrees.
 
 **Demo:** https://youtu.be/5zTpzbCl9vQ
 
+**Merged upstream contributions:** [#1975](https://github.com/KeeperHub/keeperhub/pull/1975) · [#2012](https://github.com/KeeperHub/keeperhub/pull/2012)
+
 RunProof runs a declarative spec against a KeeperHub workflow, then reads the contract
 state **itself** — over its own RPC, with viem, never through KeeperHub — and cross-checks
 what actually happened against what was reported.
@@ -58,7 +60,7 @@ cp .env.example .env
 Fill `.env` in this order — `FIXTURE_ADDRESS` comes last because deploying needs the other three:
 
 1. `SEPOLIA_RPC_URL` — any Sepolia endpoint.
-2. `DEPLOYER_PRIVATE_KEY` / `DEPLOYER_ADDRESS` — a throwaway key with a little Sepolia ETH. Not
+2. `DEPLOYER_PRIVATE_KEY` — a throwaway key with a little Sepolia ETH. Not
    a KeeperHub wallet: KeeperHub does not export private keys, and does not need to.
 3. `KEEPERHUB_API_KEY` — a `kh_` org key from the KeeperHub dashboard.
 

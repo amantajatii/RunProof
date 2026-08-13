@@ -87,7 +87,7 @@ Baseline `increment()` sukses, `raw/wait.json` + `raw/status.json`:
 | `workflowType` | `"read"` | Workflow-nya satu node `web3/write-contract` — jelas write |
 | `progress` | `totalSteps: 0`, `completedSteps: 2`, `percentage: 0` | Eksekusi sudah `success`; progress-nya tidak pernah terisi benar |
 
-### 1. Node version bertentangan (branch `staging`) — PR terbuka
+### 1. Node version bertentangan (branch `staging`) — PR merged
 
 | Sumber | Versi |
 |---|---|
