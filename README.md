@@ -4,6 +4,8 @@
 
 A reported success is only a claim until the chain agrees.
 
+**Demo:** https://youtu.be/5zTpzbCl9vQ
+
 RunProof runs a declarative spec against a KeeperHub workflow, then reads the contract
 state **itself** — over its own RPC, with viem, never through KeeperHub — and cross-checks
 what actually happened against what was reported.
@@ -146,13 +148,8 @@ rather than pretend otherwise.
 Transport is REST throughout. The MCP OAuth session threw intermittent 401s during the gate;
 the `kh_` org key never failed once.
 
-## Research notes
+## Supporting evidence
 
-- [`gate-findings.md`](gate-findings.md) — what the KeeperHub API actually does under stress
-  (Indonesian). The planned gas-underrun scenario turned out to be unbuildable: `gasLimitMultiplier`
-  is ignored because the relayer sets its own gas limit. The `failOnError` trap replaced it, and
-  it is the stronger demo.
-- [`TEARDOWN.md`](TEARDOWN.md) — friction ledger and the upstream fix ([KeeperHub/keeperhub#1975](https://github.com/KeeperHub/keeperhub/pull/1975)).
-
-Neither claims retry behaviour: `recoveryOwner: keeperhub` was never once observed, so it is
-not asserted anywhere.
+- [`gate-findings.md`](gate-findings.md) — reproducible observations from the reliability gate,
+  including the `failOnError` behavior demonstrated by RunProof.
+- [`TEARDOWN.md`](TEARDOWN.md) — the builder friction ledger and upstream documentation fix.

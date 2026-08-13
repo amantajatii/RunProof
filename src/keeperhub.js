@@ -1,6 +1,6 @@
 const BASE = process.env.KEEPERHUB_BASE_URL ?? 'https://app.keeperhub.com';
 
-// REST only. MCP OAuth threw intermittent 401s during the gate (see TEARDOWN.md);
+// REST only. MCP OAuth threw intermittent 401s during setup;
 // the kh_ org key never failed once.
 async function call(path, { method = 'GET', body } = {}) {
   const key = process.env.KEEPERHUB_API_KEY;
